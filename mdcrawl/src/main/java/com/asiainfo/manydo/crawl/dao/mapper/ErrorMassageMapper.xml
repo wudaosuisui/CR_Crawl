@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.manydo.crawl.dao.mapper.ErrorMassageMapper">
+  <resultMap id="BaseResultMap" type="com.asiainfo.manydo.crawl.dao.pojo.ErrorMassage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="web_name" jdbcType="VARCHAR" property="webName" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="massage" jdbcType="VARCHAR" property="massage" />
+    <result column="time_stamp" jdbcType="DATE" property="timeStamp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, web_name, url, massage, time_stamp
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from error_massage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from error_massage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.asiainfo.manydo.crawl.dao.pojo.ErrorMassage">
+    insert into error_massage (id, web_name, url, 
+      massage, time_stamp)
+    values (#{id,jdbcType=INTEGER}, #{webName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{massage,jdbcType=VARCHAR}, #{timeStamp,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.asiainfo.manydo.crawl.dao.pojo.ErrorMassage">
+    insert into error_massage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="webName != null">
+        web_name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="massage != null">
+        massage,
+      </if>
+      <if test="timeStamp != null">
+        time_stamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="webName != null">
+        #{webName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="massage != null">
+        #{massage,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        #{timeStamp,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.asiainfo.manydo.crawl.dao.pojo.ErrorMassage">
+    update error_massage
+    <set>
+      <if test="webName != null">
+        web_name = #{webName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="massage != null">
+        massage = #{massage,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        time_stamp = #{timeStamp,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.asiainfo.manydo.crawl.dao.pojo.ErrorMassage">
+    update error_massage
+    set web_name = #{webName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      massage = #{massage,jdbcType=VARCHAR},
+      time_stamp = #{timeStamp,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
