@@ -3,6 +3,9 @@ package com.asiainfo.manydo.crawl.main;
 import com.asiainfo.manydo.crawl.dao.mapper.MhReshourseMapper;
 import com.asiainfo.manydo.crawl.dao.pojo.MhReshourse;
 import com.asiainfo.manydo.crawl.extract.JsoupExctrator;
+import com.asiainfo.manydo.crawl.fetcher.HttpClient;
+import com.asiainfo.manydo.crawl.fetcher.HttpClient3;
+import com.asiainfo.manydo.crawl.fetcher.HttpClient4;
 import com.asiainfo.manydo.crawl.fetcher.HttpClientFetcher;
 import com.asiainfo.manydo.crawl.service.CaricatureService;
 import com.asiainfo.manydo.crawl.spring.SpringManage;
@@ -33,10 +36,35 @@ public class TestMain {
     }
 
     public static void test(){
-        HttpClientFetcher httpClientFetcher = new HttpClientFetcher();
-        JsoupExctrator jsoupExctrator = new JsoupExctrator();
-        String categoryUrl = "http://www.buka.cn/category";
-        jsoupExctrator.init(httpClientFetcher.sendGetRequest(categoryUrl));
+
+
+/*
+
+Get
+Post
+访问网页 测试成功
+
+//        String url = "http://www.buka.cn/category";
+        String url = "http://www.buka.cn/category/12041/%E7%8E%84%E5%B9%BB";
+
+
+        JsoupExctrator jsoupExctrator1 = new JsoupExctrator();
+        JsoupExctrator jsoupExctrator2 = new JsoupExctrator();
+        JsoupExctrator jsoupExctrator3 = new JsoupExctrator();
+
+        jsoupExctrator1.init(HttpClient.doPost(url,"start=56"));
+        log.info(jsoupExctrator1.select("#mangawrap > li:nth-child(1)"));
+
+        Map map = new HashMap();
+        map.put("start","56");
+        jsoupExctrator2.init(HttpClient3.doPost(url,map));
+        log.info(jsoupExctrator2.select("#mangawrap > li:nth-child(1)"));
+
+        jsoupExctrator3.init(HttpClient4.doPost(url,map));
+        log.info(jsoupExctrator3.select("#mangawrap > li:nth-child(1)"));
+
+*/
+
 
 /*
 
