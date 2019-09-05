@@ -148,6 +148,7 @@ public class HttpClientFetcher implements Fetcher{
 */
 
 
+//百度
     public String sendGetRequestOfBaiDu(String urlStr) throws Exception {
         URL url = new URL(urlStr);
 

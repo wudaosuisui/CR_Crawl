@@ -13,6 +13,16 @@ public class ErrorMassage {
 
     private Date timeStamp;
 
+    public ErrorMassage() {
+    }
+
+    public ErrorMassage(String webName, String url, String massage, Date timeStamp) {
+        this.webName = webName;
+        this.url = url;
+        this.massage = massage;
+        this.timeStamp = timeStamp;
+    }
+
     public Integer getId() {
         return id;
     }
