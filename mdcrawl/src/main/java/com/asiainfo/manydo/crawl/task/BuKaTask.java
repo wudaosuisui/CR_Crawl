@@ -15,7 +15,7 @@ import org.jsoup.nodes.Element;
 import java.util.*;
 
 @Slf4j
-public class BuKaTask {
+public class BuKaTask extends  CrawlTask{
 
 //    访问器
     private HttpClientFetcher httpClientFetcher = new HttpClientFetcher();
@@ -25,11 +25,13 @@ public class BuKaTask {
     private JsoupExctrator jsoupExctratorForPage = new JsoupExctrator();
 //    存储器
     private CaricatureService caricatureService = SpringManage.getBean(CaricatureService.class);
+    @Override
+    public void run() {
 
+    }
     /*
     * 执行函数
     * */
-
     public void run(String seedUrl,String catgoryName){
 
         this.CrawlBuKa(seedUrl,catgoryName);
@@ -146,7 +148,7 @@ public class BuKaTask {
 //        作者
         String author = jsoupExctratorForPage.select(".author");
 //        书名
-        String bookName = jsoupExctratorForPage.select(".title-font");
+        String bookName = formalTitleP(jsoupExctratorForPage.select(".title-font"));
 
 //      示例数据：  ICAZ:21300_157477|{"createTime":"2019-08-26","p1":"一代灵后 第12话 人世间（下）","p2":"","p3":"","p4":{"cat1":"阅读","cat2":"阅读","cat3":"","cat4":"","cat5":"0"},"tags":""}
 
@@ -166,7 +168,7 @@ public class BuKaTask {
 //            存储的 String
                 StringBuffer str = new StringBuffer();
                 str.append("\"createTime\":\"2019-09-02\",\"p1\":\"");
-                str.append(element.attr("title"));
+                str.append(formalTitleP(element.attr("title")));
                 str.append("\",\"p2\":\"");
                 str.append(author);
                 str.append("\",\"p3\":\""+url+"\",\"p4\":{\"cat1\":\"阅读\",\"cat2\":\"阅读\",\"cat3\":\"" +catgoryName+
@@ -226,5 +228,6 @@ public class BuKaTask {
         Element next = elements.get(elements.size()-1);
         return next.attr("href");
     }
+
 
 }

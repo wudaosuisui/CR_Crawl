@@ -13,7 +13,7 @@ import org.jsoup.select.Elements;
 import org.jsoup.nodes.Element;
 
 @Slf4j
-public class DMZJTask {
+public class DMZJTask  extends  CrawlTask{
 
     //    访问器
     private HttpClientFetcher httpClientFetcher = new HttpClientFetcher();
@@ -23,6 +23,21 @@ public class DMZJTask {
     private JsoupExctrator jsoupExctratorForPage = new JsoupExctrator();
     //    存储器
     private CaricatureService caricatureService = SpringManage.getBean(CaricatureService.class);
+
+    public DMZJTask(HttpClientFetcher httpClientFetcher, JsoupExctrator jsoupExctratorForList, JsoupExctrator jsoupExctratorForPage, CaricatureService caricatureService) {
+        this.httpClientFetcher = httpClientFetcher;
+        this.jsoupExctratorForList = jsoupExctratorForList;
+        this.jsoupExctratorForPage = jsoupExctratorForPage;
+        this.caricatureService = caricatureService;
+    }
+
+    public DMZJTask() {
+    }
+
+    @Override
+    public void run() {
+
+    }
 
     /*
     * 执行函数
@@ -144,7 +159,7 @@ public class DMZJTask {
         if(end>0){
             return strTitle.substring(0,end);
         }
-        return strTitle;
+        return formalTitleP(strTitle);
     }
 
     public String getId(String url){
@@ -155,6 +170,8 @@ public class DMZJTask {
         }
         return null;
     }
+
+
 }
 
 
