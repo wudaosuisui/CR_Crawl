@@ -66,7 +66,7 @@ public class DMZJTask  extends  CrawlTask{
 //        访问的url
         String url = "";
 //        页码
-        int page = 219 ;
+        int page = 1 ;
 //      在最大页数范围内  循环url
         try {
             for (;page<=pageMax;page++){
@@ -78,22 +78,45 @@ public class DMZJTask  extends  CrawlTask{
 //                获取列表元素
                 Elements elements = jsoupExctratorForList.selectElements("body > div.wrap_mhlist.autoHeight > div.wrap_mhlist_l.con_left > div.wrap_list_con.autoHeight > div > ul > li");
 
+//        通用id
+                String re_id = "ICAZ:2626_";
+
 //                循环处理列表元素
                 for(Element element : elements){
+                    String bookUrl=element.select("span > h3 > a").attr("href");
+                    String title = formalTitleP(element.select("span > h3 > a").text());
+                    String author = formalAuthor(element.select("span > p:nth-child(2)").text());
+//            存储的 String
+                    StringBuffer str = new StringBuffer();
+                    str.append("{\"createTime\":\"2019-09-06\",\"p1\":\"");
+                    str.append(title);
+                    str.append("\",\"p2\":\"");
+                    str.append(author);
+                    str.append("\",\"p3\":\"");
+                    str.append(url);
+                    str.append("\",\"p4\":{\"cat1\":\"阅读\",\"cat2\":\"阅读\",\"cat3\":\"" );
+                    str.append(catgoryName);
+                    str.append("\",\"cat4\":\"\",\"cat5\":\"0\"},\"tags\":\"\"}");
+                    MhReshourse mhReshourse = new MhReshourse(re_id+getId(url),str.toString());
+                    caricatureService.add(mhReshourse);
+
+
+
 
 //                    log.info("bookUrl : "+element.select("span > h3 > a").attr("href"));
 //                    爬取详情页
-                    CrawlDMZJPage(element.select("span > h3 > a").attr("href"),catgoryName);
+//                    CrawlDMZJPage(element.select("span > h3 > a").attr("href"),catgoryName);
 
                 }
 
                 log.info("列表页爬取 "+catgoryName+" 类型, "+page+" 页，爬取完成");
             }
+            caricatureService.addMassage("动漫之家 "+catgoryName,url,catgoryName+" 类型，爬取完成，page "+(page-1));
         }catch (Exception e){
             log.error(" 循环爬取列表页时出错 ， 类型： "+catgoryName+" 类型代码 ： "+catgoryNum+" 页数, url: "+url);
         }
 
-        log.info(" ------------  "+catgoryName+" 类型 爬取完成 ------------------");
+        log.info(" ------------  END "+catgoryName+" 类型 爬取完成 ------------------");
     }
 
     /*
@@ -123,7 +146,7 @@ public class DMZJTask  extends  CrawlTask{
                 StringBuffer str = new StringBuffer();
                 String url = element.attr("href");
                 String title = formalTitle(element.attr("title"));
-                str.append("\"createTime\":\"2019-09-02\",\"p1\":\"");
+                str.append("{\"createTime\":\"2019-09-02\",\"p1\":\"");
                 str.append(title);
                 str.append("\",\"p2\":\"");
                 str.append(author);

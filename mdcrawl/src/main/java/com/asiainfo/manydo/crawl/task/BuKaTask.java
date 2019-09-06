@@ -68,7 +68,7 @@ public class BuKaTask extends  CrawlTask{
             while (!isStop) {
                 try {
 //            列表元素的 url
-                    List<String> urlList = new ArrayList<>();
+//                    List<String> urlList = new ArrayList<>();
 //            访问 cUrl  获取列表页
                     log.info("开始爬取列表页 Page : " + page + " Url : " + cUrl);
 //            存储一下  访问前  cURl的值
@@ -80,16 +80,34 @@ public class BuKaTask extends  CrawlTask{
                     cUrl = seedUrl+page*28;
                     Elements elements = jsoupExctratorForList.selectElements("#mangawrap > li");
 
-//            循环获取列表元素 url
-                    for (Element element : elements) {
-                        urlList.add("http://www.buka.cn" + element.select("a").get(0).attr("href"));
-                    }
+//        通用id
+                    String re_id = "ICAZ:2626_";
 
 //            循环处理列表元素 url
-                    for (String bookUrl : urlList) {
-//                        log.info(" bookUrl : " + bookUrl);
-                        CrawlBuKaPage(bookUrl,catgoryName);
+                    for (Element element : elements) {
+                        String url= "http://www.buka.cn" + element.select("div > a").get(0).attr("href");
+                        String title = formalTitleP(element.select("div > a").text());
+                        String author = element.select("div > p > a.manga-author").text();
+//            存储的 String
+                        StringBuffer str = new StringBuffer();
+                        str.append("{\"createTime\":\"2019-09-06\",\"p1\":\"");
+                        str.append(title);
+                        str.append("\",\"p2\":\"");
+                        str.append(author);
+                        str.append("\",\"p3\":\"");
+                        str.append(url);
+                        str.append("\",\"p4\":{\"cat1\":\"阅读\",\"cat2\":\"阅读\",\"cat3\":\"" );
+                        str.append(catgoryName);
+                        str.append("\",\"cat4\":\"\",\"cat5\":\"0\"},\"tags\":\"\"}");
+                        MhReshourse mhReshourse = new MhReshourse(re_id+getId(url),str.toString());
+                        caricatureService.add(mhReshourse);
                     }
+
+////            循环处理列表元素 url
+//                    for (String bookUrl : urlList) {
+////                        log.info(" bookUrl : " + bookUrl);
+//                        CrawlBuKaPage(bookUrl,catgoryName);
+//                    }
 
                     log.info("列表页爬取完成 Page : " + (page++) + " Url : " + cUrl);
 
@@ -167,7 +185,7 @@ public class BuKaTask extends  CrawlTask{
 
 //            存储的 String
                 StringBuffer str = new StringBuffer();
-                str.append("\"createTime\":\"2019-09-02\",\"p1\":\"");
+                str.append("{\"createTime\":\"2019-09-02\",\"p1\":\"");
                 str.append(formalTitleP(element.attr("title")));
                 str.append("\",\"p2\":\"");
                 str.append(author);
@@ -207,7 +225,7 @@ public class BuKaTask extends  CrawlTask{
     public String getId(String url){
         int top = url.lastIndexOf("/")+1;
         if(top>1){
-            int end = url.indexOf(".");
+            int end = url.indexOf(".html");
             return url.substring(top,end);
         }
         return null;

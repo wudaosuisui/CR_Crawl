@@ -69,7 +69,8 @@ Post
 
 /*
 
-布卡漫画 按照分类抓取
+
+//布卡漫画 按照分类抓取
         BuKaTask buKaTask = new BuKaTask();
         List<String[]> catgoryList = new ArrayList<>();
 
@@ -80,6 +81,7 @@ Post
         for(String[] catgory : catgoryList){
             buKaTask.run(catgory[0],catgory[1]);
         }
+
 */
 
         /*
@@ -130,6 +132,7 @@ Post
         */
 
 /*
+// 动漫之家 爬取测试
 
         DMZJTask DMZJTask = new DMZJTask();
         List<String[]> catgoryList = new ArrayList<>();
@@ -138,6 +141,7 @@ Post
         for(String[] catgory : catgoryList){
             DMZJTask.run(catgory[0],catgory[1],catgory[2]);
         }
+
 */
 
 
