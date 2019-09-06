@@ -15,7 +15,7 @@ import java.util.List;
 public class CrMdCrawlApp {
     public static void main( String[] args ) {
         SpringManage.init();
-        run();
+//        run();
         runDMZJ();
 //        test();
     }

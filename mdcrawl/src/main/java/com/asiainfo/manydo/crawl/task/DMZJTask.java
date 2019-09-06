@@ -79,7 +79,7 @@ public class DMZJTask  extends  CrawlTask{
                 Elements elements = jsoupExctratorForList.selectElements("body > div.wrap_mhlist.autoHeight > div.wrap_mhlist_l.con_left > div.wrap_list_con.autoHeight > div > ul > li");
 
 //        通用id
-                String re_id = "ICAZ:2626_";
+                String re_id = "ICAZ:22891_";
 
 //                循环处理列表元素
                 for(Element element : elements){
@@ -93,11 +93,11 @@ public class DMZJTask  extends  CrawlTask{
                     str.append("\",\"p2\":\"");
                     str.append(author);
                     str.append("\",\"p3\":\"");
-                    str.append(url);
+                    str.append(bookUrl);
                     str.append("\",\"p4\":{\"cat1\":\"阅读\",\"cat2\":\"阅读\",\"cat3\":\"" );
                     str.append(catgoryName);
                     str.append("\",\"cat4\":\"\",\"cat5\":\"0\"},\"tags\":\"\"}");
-                    MhReshourse mhReshourse = new MhReshourse(re_id+getId(url),str.toString());
+                    MhReshourse mhReshourse = new MhReshourse(re_id+getId(bookUrl),str.toString());
                     caricatureService.add(mhReshourse);
 
 
@@ -139,7 +139,7 @@ public class DMZJTask  extends  CrawlTask{
 //      示例数据：  ICAZ:21300_157477|{"createTime":"2019-08-26","p1":"一代灵后 第12话 人世间（下）","p2":"","p3":"","p4":{"cat1":"阅读","cat2":"阅读","cat3":"","cat4":"","cat5":"0"},"tags":""}
 
 //        通用id
-            String re_id = "ICAZ:2626_";
+            String re_id = "ICAZ:22891_";
 
             for(Element element : elements) {
 //            存储的 String

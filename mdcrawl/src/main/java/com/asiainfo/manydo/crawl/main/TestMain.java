@@ -131,7 +131,7 @@ Post
         log.info(strAuthor);
         */
 
-/*
+
 // 动漫之家 爬取测试
 
         DMZJTask DMZJTask = new DMZJTask();
@@ -142,7 +142,7 @@ Post
             DMZJTask.run(catgory[0],catgory[1],catgory[2]);
         }
 
-*/
+
 
 
         /*
