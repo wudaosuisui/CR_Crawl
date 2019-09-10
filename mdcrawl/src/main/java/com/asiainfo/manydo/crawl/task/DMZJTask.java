@@ -84,7 +84,7 @@ public class DMZJTask  extends  CrawlTask{
 //                循环处理列表元素
                 for(Element element : elements){
                     String bookUrl=element.select("span > h3 > a").attr("href");
-                    String title = formalTitleP(element.select("span > h3 > a").text());
+                    String title = formalStrP(element.select("span > h3 > a").text());
                     String author = formalAuthor(element.select("span > p:nth-child(2)").text());
 //            存储的 String
                     StringBuffer str = new StringBuffer();
@@ -182,7 +182,7 @@ public class DMZJTask  extends  CrawlTask{
         if(end>0){
             return strTitle.substring(0,end);
         }
-        return formalTitleP(strTitle);
+        return formalStrP(strTitle);
     }
 
     public String getId(String url){

@@ -78,6 +78,7 @@ public class BuKaTask extends  CrawlTask{
                     jsoupExctratorForList.init(listStr);
 //            获取下一页
                     cUrl = seedUrl+page*28;
+//                    获取元素列表
                     Elements elements = jsoupExctratorForList.selectElements("#mangawrap > li");
 
 //        通用id
@@ -86,7 +87,7 @@ public class BuKaTask extends  CrawlTask{
 //            循环处理列表元素 url
                     for (Element element : elements) {
                         String url= "http://www.buka.cn" + element.select("div > a").get(0).attr("href");
-                        String title = formalTitleP(element.select("div > a").text());
+                        String title = formalStrP(element.select("div > a").text());
                         String author = element.select("div > p > a.manga-author").text();
 //            存储的 String
                         StringBuffer str = new StringBuffer();
@@ -166,7 +167,7 @@ public class BuKaTask extends  CrawlTask{
 //        作者
         String author = jsoupExctratorForPage.select(".author");
 //        书名
-        String bookName = formalTitleP(jsoupExctratorForPage.select(".title-font"));
+        String bookName = formalStrP(jsoupExctratorForPage.select(".title-font"));
 
 //      示例数据：  ICAZ:21300_157477|{"createTime":"2019-08-26","p1":"一代灵后 第12话 人世间（下）","p2":"","p3":"","p4":{"cat1":"阅读","cat2":"阅读","cat3":"","cat4":"","cat5":"0"},"tags":""}
 
@@ -186,7 +187,7 @@ public class BuKaTask extends  CrawlTask{
 //            存储的 String
                 StringBuffer str = new StringBuffer();
                 str.append("{\"createTime\":\"2019-09-02\",\"p1\":\"");
-                str.append(formalTitleP(element.attr("title")));
+                str.append(formalStrP(element.attr("title")));
                 str.append("\",\"p2\":\"");
                 str.append(author);
                 str.append("\",\"p3\":\""+url+"\",\"p4\":{\"cat1\":\"阅读\",\"cat2\":\"阅读\",\"cat3\":\"" +catgoryName+

@@ -60,6 +60,40 @@ public class HttpClientFetcher implements Fetcher{
 //        return isSuccess;
 //    }
 
+    public String sendCallUrl(String urlStr){
+        String reStr = "";
+        String shpath = "curl \""+urlStr+"\" -H \"referer: https://xian.esf.fang.com/\" --compressed > page/curl.txt";
+        String[] cmd = new String[]{"sh","-c",shpath};
+        String fName ="./page/curl.txt";
+
+        Process ps = null;
+//        删除文件
+//        shpath = "rm -rf page/*";
+//        cmd[2] = shpath;
+//        try {
+//            ps = Runtime.getRuntime().exec(cmd);
+//            ps.waitFor();
+//        } catch (Exception e) {
+//            log.error("",e);
+//        }
+//        访问网页、创建文件
+        try {
+            ps = Runtime.getRuntime().exec(cmd);
+            ps.waitFor();
+        } catch (Exception e) {
+            log.error("",e);
+        }
+//        读取文件内容 存储文件内容 到 reStr
+        try {
+            reStr = readFileGBK(fName);
+        }catch (Exception e){
+            log.error("",e);
+        }
+
+
+        return reStr;
+    }
+
 /*
 * 访问房天下网站
 *

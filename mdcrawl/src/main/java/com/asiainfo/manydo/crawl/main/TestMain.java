@@ -11,6 +11,7 @@ import com.asiainfo.manydo.crawl.service.CaricatureService;
 import com.asiainfo.manydo.crawl.spring.SpringManage;
 import com.asiainfo.manydo.crawl.task.BuKaTask;
 import com.asiainfo.manydo.crawl.task.DMZJTask;
+import com.asiainfo.manydo.crawl.task.SinaCar;
 import lombok.extern.slf4j.Slf4j;
 
 import org.jsoup.nodes.Element;
@@ -35,7 +36,27 @@ public class TestMain {
 
     }
 
+
+
     public static void test(){
+        HttpClientFetcher httpClientFetcher = new HttpClientFetcher();
+        JsoupExctrator jsoupExctrator = new JsoupExctrator();
+        String categoryUrl = "http://db.auto.sina.com.cn/list-0-1-0-0-0-0-0-0-9-0-1.html";
+        log.info(httpClientFetcher.sendCallUrl(categoryUrl));
+//        jsoupExctrator.init(httpClientFetcher.sendGetRequest(categoryUrl));
+//        log.info(jsoupExctrator.select("#J_motoDataMain > div.content > div.y-tuku235.seek-list > ul > li:nth-child(1)"));
+
+/*
+
+        SinaCar sinaCar = new SinaCar();
+        List<String[]> catgoryList = new ArrayList<>();
+//        new String[]{"入口url","类型名称"}
+        catgoryList.add(new String[]{"http://db.auto.sina.com.cn/list-0-1-0-0-0-0-0-0-9-0-1.html","两厢"});
+
+        for(String[] catgory : catgoryList){
+            sinaCar.run(catgory[0],catgory[1]);
+        }
+*/
 
 
 /*
@@ -131,6 +152,7 @@ Post
         log.info(strAuthor);
         */
 
+/*
 
 // 动漫之家 爬取测试
 
@@ -142,6 +164,7 @@ Post
             DMZJTask.run(catgory[0],catgory[1],catgory[2]);
         }
 
+*/
 
 
 
