@@ -1,26 +1,13 @@
 package com.asiainfo.manydo.crawl.main;
 
-import com.asiainfo.manydo.crawl.dao.mapper.MhReshourseMapper;
-import com.asiainfo.manydo.crawl.dao.pojo.MhReshourse;
 import com.asiainfo.manydo.crawl.extract.JsoupExctrator;
-import com.asiainfo.manydo.crawl.fetcher.HttpClient;
-import com.asiainfo.manydo.crawl.fetcher.HttpClient3;
-import com.asiainfo.manydo.crawl.fetcher.HttpClient4;
 import com.asiainfo.manydo.crawl.fetcher.HttpClientFetcher;
-import com.asiainfo.manydo.crawl.service.CaricatureService;
 import com.asiainfo.manydo.crawl.spring.SpringManage;
-import com.asiainfo.manydo.crawl.task.BuKaTask;
-import com.asiainfo.manydo.crawl.task.DMZJTask;
-import com.asiainfo.manydo.crawl.task.DangDangTask;
-import com.asiainfo.manydo.crawl.task.SinaCar;
 import lombok.extern.slf4j.Slf4j;
 
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+/*
+* 编写代码时 用于测试的启动函数
+* */
 @Slf4j
 public class TestMain {
     public static void main( String[] args ) {

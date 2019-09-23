@@ -1,17 +1,14 @@
 package com.asiainfo.manydo.crawl.main;
 
-import com.asiainfo.manydo.crawl.dao.pojo.SysUser;
 import com.asiainfo.manydo.crawl.extract.JsoupExctrator;
 import com.asiainfo.manydo.crawl.fetcher.HttpClientFetcher;
-import com.asiainfo.manydo.crawl.service.SysUserService;
 import com.asiainfo.manydo.crawl.spring.SpringManage;
-import com.asiainfo.manydo.crawl.task.BuKaTask;
-import com.asiainfo.manydo.crawl.task.DMZJTask;
-import com.asiainfo.manydo.crawl.task.SinaCar;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.List;
+
+/*
+* 部署的 工作上的 程序，一般使用此 启动函数
+* */
 
 @Slf4j
 public class CrMdCrawlApp {

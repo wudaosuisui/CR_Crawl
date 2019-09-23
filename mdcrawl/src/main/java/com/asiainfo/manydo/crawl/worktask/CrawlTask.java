@@ -1,4 +1,4 @@
-package com.asiainfo.manydo.crawl.task;
+package com.asiainfo.manydo.crawl.worktask;
 
 public abstract class CrawlTask implements Runnable {
 

@@ -1,4 +1,4 @@
-package com.asiainfo.manydo.crawl.task;
+package com.asiainfo.manydo.crawl.worktask;
 
 import com.asiainfo.manydo.crawl.extract.JsoupExctrator;
 import com.asiainfo.manydo.crawl.fetcher.HttpClientFetcher;
