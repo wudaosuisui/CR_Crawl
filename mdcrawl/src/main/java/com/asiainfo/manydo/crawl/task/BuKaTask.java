@@ -14,6 +14,11 @@ import org.jsoup.nodes.Element;
 
 import java.util.*;
 
+
+/*
+*
+* 布卡漫画
+* */
 @Slf4j
 public class BuKaTask extends  CrawlTask{
 

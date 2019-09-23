@@ -9,6 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/*
+* 新浪汽车
+* */
+
 @Slf4j
 public class SinaCar extends  CrawlTask{
     //    访问器
