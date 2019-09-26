@@ -3,6 +3,7 @@ package com.asiainfo.manydo.crawl.main;
 import com.asiainfo.manydo.crawl.extract.JsoupExctrator;
 import com.asiainfo.manydo.crawl.fetcher.HttpClientFetcher;
 import com.asiainfo.manydo.crawl.spring.SpringManage;
+import com.asiainfo.manydo.crawl.worktask.SougouWeixinTask;
 import lombok.extern.slf4j.Slf4j;
 
 /*
@@ -27,6 +28,13 @@ public class TestMain {
 
     public static void test(){
 
+        SougouWeixinTask sougouWeixinTask = new SougouWeixinTask();
+        String Url = "https://weixin.sogou.com/weixin?query=%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6+%E9%81%93%E5%BE%B7&_sug_type_=&sut=24552&lkt=1%2C1569466179086%2C1569466179086&s_from=input&_sug_=y&type=2&sst0=1569466203385&page=";
+//        sougouWeixinTask.run("https://weixin.sogou.com/weixin?query=%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6+%E9%81%93%E5%BE%B7&_sug_type_=&sut=24552&lkt=1%2C1569466179086%2C1569466179086&s_from=input&_sug_=y&type=2&sst0=1569466203385&page=4&ie=utf8&w=01019900&dr=1");
+        for(int i = 1 ;i<=10 ;i++){
+            sougouWeixinTask.run(Url+i+"&ie=utf8&w=01019900&dr=1",i);
+        }
+        
 /*
 
         客户识别 9月20日 当当网
