@@ -199,6 +199,9 @@ public class SougouWeixinTask {
     public String getUrl2(Set<String> keys){
         StringBuffer stringBuffer = new StringBuffer();
         for(String key :keys){
+            if(key.contains(" ")){
+                key = key.replace(" ","%20");
+            }
             stringBuffer.append(key);
             stringBuffer.append("%20");
         }
