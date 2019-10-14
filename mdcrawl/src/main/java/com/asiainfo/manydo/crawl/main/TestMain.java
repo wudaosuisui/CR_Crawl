@@ -1,10 +1,16 @@
 package com.asiainfo.manydo.crawl.main;
 
+import com.asiainfo.manydo.crawl.dao.pojo.WeChatSubscription;
 import com.asiainfo.manydo.crawl.extract.JsoupExctrator;
 import com.asiainfo.manydo.crawl.fetcher.HttpClientFetcher;
+import com.asiainfo.manydo.crawl.service.WeChatService;
 import com.asiainfo.manydo.crawl.spring.SpringManage;
 import com.asiainfo.manydo.crawl.worktask.SougouWeixinTask;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
 * 编写代码时 用于测试的启动函数
@@ -28,13 +34,60 @@ public class TestMain {
 
     public static void test(){
 
+//        搜狗微信  爬取  高校 + 关键字
+
+
         SougouWeixinTask sougouWeixinTask = new SougouWeixinTask();
-        String Url = "https://weixin.sogou.com/weixin?query=%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6+%E9%81%93%E5%BE%B7&_sug_type_=&sut=24552&lkt=1%2C1569466179086%2C1569466179086&s_from=input&_sug_=y&type=2&sst0=1569466203385&page=";
-//        sougouWeixinTask.run("https://weixin.sogou.com/weixin?query=%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6+%E9%81%93%E5%BE%B7&_sug_type_=&sut=24552&lkt=1%2C1569466179086%2C1569466179086&s_from=input&_sug_=y&type=2&sst0=1569466203385&page=4&ie=utf8&w=01019900&dr=1");
-        for(int i = 1 ;i<=10 ;i++){
-            sougouWeixinTask.run(Url+i+"&ie=utf8&w=01019900&dr=1",i);
+        String driverDir = "D:\\WorkShoft\\Chrome\\Application\\chromedriver.exe";
+        Set<String> schools = new HashSet<>();
+        Set<String> keys = new HashSet<>();
+
+        Set<String> cSet = new HashSet<>();
+
+        schools.add("北京交通大学");
+
+        keys.add("道德");
+
+//        循环 key
+        for(String key : keys){
+            cSet.add(key);
+//            循环 school
+            for(String school :schools){
+                cSet.add(school);
+//                循环 10 页
+                for (int page = 1; page <= 1; page++) {
+//                    进行访问处理
+                    sougouWeixinTask.run(cSet, page,driverDir,null);
+                }
+                cSet.remove(school);
+            }
+            cSet.remove(key);
         }
-        
+
+//        for (int i = 1; i <= 10; i++) {
+//
+////            sougouWeixinTask.run(Url + i + "&ie=utf8&w=01019900&dr=1", i);
+//
+//        }
+
+
+
+//        System.out.print(new Date());
+//        WeChatService weChatService = SpringManage.getBean(WeChatService.class);
+////        weChatService.addMassage("testurl","testmassage");
+//        WeChatSubscription weChatSubscription = new WeChatSubscription();
+//        weChatSubscription.setKeyword("test");
+//        weChatSubscription.setTimeStamp(new Date());
+//        weChatService.addWeChat(weChatSubscription);
+
+
+//        SougouWeixinTask sougouWeixinTask = new SougouWeixinTask();
+//        String Url = "https://weixin.sogou.com/weixin?query=%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6+%E9%81%93%E5%BE%B7&_sug_type_=&sut=24552&lkt=1%2C1569466179086%2C1569466179086&s_from=input&_sug_=y&type=2&sst0=1569466203385&page=";
+////        sougouWeixinTask.run("https://weixin.sogou.com/weixin?query=%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6+%E9%81%93%E5%BE%B7&_sug_type_=&sut=24552&lkt=1%2C1569466179086%2C1569466179086&s_from=input&_sug_=y&type=2&sst0=1569466203385&page=4&ie=utf8&w=01019900&dr=1");
+//        for(int i = 1 ;i<=10 ;i++){
+//            sougouWeixinTask.run(Url+i+"&ie=utf8&w=01019900&dr=1",i);
+//        }
+
 /*
 
         客户识别 9月20日 当当网

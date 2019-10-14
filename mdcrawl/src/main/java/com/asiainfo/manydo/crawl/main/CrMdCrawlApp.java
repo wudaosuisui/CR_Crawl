@@ -3,7 +3,11 @@ package com.asiainfo.manydo.crawl.main;
 import com.asiainfo.manydo.crawl.extract.JsoupExctrator;
 import com.asiainfo.manydo.crawl.fetcher.HttpClientFetcher;
 import com.asiainfo.manydo.crawl.spring.SpringManage;
+import com.asiainfo.manydo.crawl.worktask.SougouWeixinTask;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 /*
@@ -19,24 +23,69 @@ public class CrMdCrawlApp {
 //        test();
     }
 
+
+
+
+    /**
+     * 搜狗微信  爬取  高校 + 关键字
+     * */
+    public static void run() {
+
+
+        SougouWeixinTask sougouWeixinTask = new SougouWeixinTask();
+        Set<String> schools = new HashSet<>();
+        Set<String> keys = new HashSet<>();
+
+        Set<String> cSet = new HashSet<>();
+
+        schools.add("北京交通大学");
+
+        keys.add("道德");
+
+//        循环 key
+        for(String key : keys){
+            cSet.add(key);
+//            循环 school
+            for(String school :schools){
+                cSet.add(school);
+//                循环 10 页
+                for (int page = 1; page <= 10; page++) {
+//                    进行访问处理
+                    sougouWeixinTask.run(cSet, page,null);
+                }
+                cSet.remove(school);
+            }
+            cSet.remove(key);
+        }
+
+        for (int i = 1; i <= 10; i++) {
+
+//            sougouWeixinTask.run(Url + i + "&ie=utf8&w=01019900&dr=1", i);
+
+        }
+    }
+
+
+
     /*
     * 新浪汽车
     * */
-    public static void run(){
-        HttpClientFetcher httpClientFetcher = new HttpClientFetcher();
-        JsoupExctrator jsoupExctrator = new JsoupExctrator();
-        String categoryUrl = "http://db.auto.sina.com.cn/list-0-1-0-0-0-0-0-0-9-0-1.html";
-        log.info(httpClientFetcher.sendCallUrl(categoryUrl));
-
-//        SinaCar sinaCar = new SinaCar();
-//        List<String[]> catgoryList = new ArrayList<>();
-////        new String[]{"入口url","类型名称"}
-//        catgoryList.add(new String[]{"http://db.auto.sina.com.cn/list-0-1-0-0-0-0-0-0-9-0-1.html","两厢"});
+//    public static void run(){
 //
-//        for(String[] catgory : catgoryList){
-//            sinaCar.run(catgory[0],catgory[1]);
-//        }
-    }
+//        HttpClientFetcher httpClientFetcher = new HttpClientFetcher();
+//        JsoupExctrator jsoupExctrator = new JsoupExctrator();
+//        String categoryUrl = "http://db.auto.sina.com.cn/list-0-1-0-0-0-0-0-0-9-0-1.html";
+//        log.info(httpClientFetcher.sendCallUrl(categoryUrl));
+//
+////        SinaCar sinaCar = new SinaCar();
+////        List<String[]> catgoryList = new ArrayList<>();
+//////        new String[]{"入口url","类型名称"}
+////        catgoryList.add(new String[]{"http://db.auto.sina.com.cn/list-0-1-0-0-0-0-0-0-9-0-1.html","两厢"});
+////
+////        for(String[] catgory : catgoryList){
+////            sinaCar.run(catgory[0],catgory[1]);
+////        }
+//    }
 
     /*
     * 布卡漫画爬取程序
