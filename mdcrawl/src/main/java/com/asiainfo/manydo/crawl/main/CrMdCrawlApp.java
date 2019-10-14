@@ -33,14 +33,97 @@ public class CrMdCrawlApp {
 
 
         SougouWeixinTask sougouWeixinTask = new SougouWeixinTask();
+        String driverDir = "D:\\WorkShoft\\Chrome\\Application\\chromedriver.exe";
         Set<String> schools = new HashSet<>();
         Set<String> keys = new HashSet<>();
 
         Set<String> cSet = new HashSet<>();
 
-        schools.add("北京交通大学");
+        schools.add("北京大学");
+        schools.add("南开大学");
 
+//        1 - 10
         keys.add("道德");
+        keys.add("德");
+        keys.add("道德");
+        keys.add("品德");
+        keys.add("立德树人 高校 高等学校");
+        keys.add("教育");
+        keys.add("高等教育");
+        keys.add("研究");
+        keys.add("科研");
+        keys.add("大学生");
+        keys.add("研究生");
+//        10 - 20
+        keys.add("硕士");
+        keys.add("博士");
+        keys.add("博士后");
+        keys.add("教师");
+        keys.add("师生");
+        keys.add("民族");
+        keys.add("中华民族 青年 基层党组织");
+        keys.add("思想");
+        keys.add("政治");
+        keys.add("思想政治 思政");
+//        20 - 30
+        keys.add("思政课");
+        keys.add("复兴");
+        keys.add("中国梦");
+        keys.add("育人");
+        keys.add("核心价值");
+        keys.add("社会主义");
+        keys.add("共产主义");
+        keys.add("中国特色社会主义");
+        keys.add("民族观");
+        keys.add("国家观");
+//        30 - 40
+        keys.add("文化观");
+        keys.add("世界观");
+        keys.add("人生观");
+        keys.add("价值观");
+        keys.add("政治方向");
+        keys.add("社会主义核心价值观");
+        keys.add("爱国 爱党");
+        keys.add("爱社会主义");
+        keys.add("教育方针");
+        keys.add("初心");
+        keys.add("使命");
+//        40 - 50
+        keys.add("主题教育");
+        keys.add("马克思主义");
+        keys.add("群众路线");
+        keys.add("民族");
+        keys.add("革命");
+        keys.add("理想");
+        keys.add("人民");
+        keys.add("谋");
+        keys.add("担当");
+        keys.add("服务");
+//        50 - 60
+        keys.add("新时代");
+        keys.add("改革开放");
+        keys.add("实事求是");
+        keys.add("依法治国");
+        keys.add("红船精神");
+        keys.add("两个维护");
+        keys.add("四个意识");
+        keys.add(" 自信");
+        keys.add("命运共同体");
+        keys.add("素质");
+//        60 - 70
+        keys.add("修养");
+        keys.add("党");
+        keys.add("信仰");
+        keys.add("信念");
+        keys.add("意识形态");
+        keys.add("理论");
+        keys.add("育人");
+        keys.add("德育");
+        keys.add("培养");
+        keys.add("文化");
+//        70 - 80
+        keys.add("习近平新时代中国特色社会主义思想");
+
 
 //        循环 key
         for(String key : keys){
@@ -49,20 +132,15 @@ public class CrMdCrawlApp {
             for(String school :schools){
                 cSet.add(school);
 //                循环 10 页
-                for (int page = 1; page <= 10; page++) {
+                for (int page = 1; page <= 1; page++) {
 //                    进行访问处理
-                    sougouWeixinTask.run(cSet, page,null);
+                    sougouWeixinTask.run(cSet, page,driverDir,null);
                 }
                 cSet.remove(school);
             }
             cSet.remove(key);
         }
 
-        for (int i = 1; i <= 10; i++) {
-
-//            sougouWeixinTask.run(Url + i + "&ie=utf8&w=01019900&dr=1", i);
-
-        }
     }
 
 
