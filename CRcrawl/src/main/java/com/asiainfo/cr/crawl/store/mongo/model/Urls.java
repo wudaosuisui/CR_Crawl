@@ -1,4 +1,4 @@
-package com.asiainfo.cr.crawl.store.pojo;
+package com.asiainfo.cr.crawl.store.mongo.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

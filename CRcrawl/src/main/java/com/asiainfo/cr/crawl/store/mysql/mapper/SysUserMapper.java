@@ -1,7 +1,7 @@
 package com.asiainfo.cr.crawl.store.mysql.mapper;
 
 
-import com.asiainfo.cr.crawl.store.pojo.SysUser;
+import com.asiainfo.cr.crawl.store.mysql.pojo.SysUser;
 
 public interface SysUserMapper {
     int deleteByPrimaryKey(Integer userId);
