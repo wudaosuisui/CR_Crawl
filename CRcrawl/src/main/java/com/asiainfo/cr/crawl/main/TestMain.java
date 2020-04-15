@@ -7,6 +7,8 @@ import com.asiainfo.cr.crawl.store.pojo.SysUser;
 import com.asiainfo.cr.crawl.store.pojo.Urls;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Date;
+
 @Slf4j
 public class TestMain {
     public static void main( String[] args ) {
@@ -23,13 +25,16 @@ public class TestMain {
 
         sysUser.setRealName("Name Real 2");
         sysUser.setUserName("user Name 2");
+        sysUser.setCreateTime(new Date());
 
+//        sysUserService.addMoSy(sysUser);
         sysUserService.addMysql(sysUser);
 
-        Urls urls = new Urls();
-
-        urls.setUrl("测试");
-        sysUserService.addMongo(urls);
+//        Urls urls = new Urls();
+//
+//        urls.setUrl("测试");
+//        urls.setCreateTime(new Date());
+//        sysUserService.addMongo(urls);
 
 //        2020年3月13日
 //        16点46分 运行测试

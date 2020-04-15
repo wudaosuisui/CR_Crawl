@@ -1,12 +1,12 @@
-package com.asiainfo.cr.crawl.store.mysql.mapper;
+package com.asiainfo.cr.crawl.store.mysql.tst;
 
 
 import com.asiainfo.cr.crawl.store.pojo.SysUser;
 
-public interface SysUserMapper {
+public interface SysUserMapperTest {
     int deleteByPrimaryKey(Integer userId);
 
-    int insert(SysUser record);
+    int myinsert(SysUser record);
 
     int insertSelective(SysUser record);
 
