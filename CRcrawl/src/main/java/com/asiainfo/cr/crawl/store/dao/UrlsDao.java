@@ -1,7 +1,7 @@
-package com.asiainfo.cr.crawl.store.mongo.dao;
+package com.asiainfo.cr.crawl.store.dao;
 
 
-import com.asiainfo.cr.crawl.store.mongo.model.Urls;
+import com.asiainfo.cr.crawl.store.pojo.Urls;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.DeleteQuery;
 import org.springframework.data.mongodb.repository.MongoRepository;

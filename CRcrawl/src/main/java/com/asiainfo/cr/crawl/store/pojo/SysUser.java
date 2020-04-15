@@ -1,4 +1,4 @@
-package com.asiainfo.cr.crawl.store.mysql.pojo;
+package com.asiainfo.cr.crawl.store.pojo;
 
 import org.springframework.data.annotation.TypeAlias;
 

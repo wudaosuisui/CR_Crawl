@@ -3,8 +3,8 @@ package com.asiainfo.cr.crawl.main;
 import com.asiainfo.cr.crawl.service.SysUserService;
 import com.asiainfo.cr.crawl.spring.SpringManage;
 //import com.asiainfo.cr.crawl.store.dao.SysUserDao;
-//import com.asiainfo.cr.crawl.store.pojo.SysUser;
-import com.asiainfo.cr.crawl.store.mysql.pojo.SysUser;
+import com.asiainfo.cr.crawl.store.pojo.SysUser;
+import com.asiainfo.cr.crawl.store.pojo.Urls;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,6 +25,11 @@ public class TestMain {
         sysUser.setUserName("user Name 2");
 
         sysUserService.addMysql(sysUser);
+
+        Urls urls = new Urls();
+
+        urls.setUrl("测试");
+        sysUserService.addMongo(urls);
 
 //        2020年3月13日
 //        16点46分 运行测试
