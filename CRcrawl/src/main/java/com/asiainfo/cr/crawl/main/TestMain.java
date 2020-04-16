@@ -2,7 +2,7 @@ package com.asiainfo.cr.crawl.main;
 
 import com.asiainfo.cr.crawl.service.SysUserService;
 import com.asiainfo.cr.crawl.spring.SpringManage;
-//import com.asiainfo.cr.crawl.store.dao.SysUserDao;
+//import com.asiainfo.cr.crawl.store.mongo.dao.SysUserMongoDao;
 import com.asiainfo.cr.crawl.store.pojo.SysUser;
 import com.asiainfo.cr.crawl.store.pojo.Urls;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class TestMain {
         sysUser.setUserName("user Name 2");
         sysUser.setCreateTime(new Date());
 
-//        sysUserService.addMoSy(sysUser);
+        sysUserService.addMoSy(sysUser);
         sysUserService.addMysql(sysUser);
 
 //        Urls urls = new Urls();

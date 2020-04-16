@@ -1,4 +1,4 @@
-package com.asiainfo.cr.crawl.store.dao;
+package com.asiainfo.cr.crawl.store.mongo.dao;
 
 
 import com.asiainfo.cr.crawl.store.pojo.Urls;
