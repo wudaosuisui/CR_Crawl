@@ -8,13 +8,32 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SysUserDao {
-//
     @Autowired
     private SysUserMapper sysUserMapper;
     @Autowired
-    private SysUserMongoDao sysUserDao;
+    private SysUserMongoDao sysUserMongoDao;
 
 
-    public void addMysql(SysUser sysUser){sysUserMapper.myinsert(sysUser);}
-    public void addMoSy(SysUser sysUser){sysUserDao.insert(sysUser);}
+//    增
+
+    public void addMy(SysUser sysUser) {
+        sysUserMapper.myinsert(sysUser);
+    }
+
+    public void addMo(SysUser sysUser) {
+        sysUserMongoDao.insert(sysUser);
+    }
+
+//    删
+
+    public void delMyById(Integer userId) {
+        sysUserMapper.deleteByPrimaryKey(userId);
+    }
+
+//    改
+
+    public void upMyById(SysUser sysUser) {
+        sysUserMapper.updateByPrimaryKey(sysUser);
+    }
+//    查
 }

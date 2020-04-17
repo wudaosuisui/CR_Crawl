@@ -12,21 +12,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserService {
     @Autowired
-    private SysUserMapper sysUserMapper;
-    @Autowired
     private UrlsDao urlsDao;
-    @Autowired
-    private SysUserMongoDao sysUserDaoTwo;
     @Autowired
     private SysUserDao sysUserDao;
 
 
 
 
-    //    增
-//    public void addMysql(SysUser sysUser){sysUserMapper.insert(sysUser);}
-    public void addMysql(SysUser sysUser){sysUserDao.addMysql(sysUser);}
-    public void addMoSy(SysUser sysUser){sysUserDao.addMoSy(sysUser);}
+//    增
+
+    public void addMysql(SysUser sysUser){sysUserDao.addMo(sysUser);}
+    public void addMoSy(SysUser sysUser){sysUserDao.addMo(sysUser);}
     public void addMongo(Urls urls){urlsDao.insert(urls);}
 
 

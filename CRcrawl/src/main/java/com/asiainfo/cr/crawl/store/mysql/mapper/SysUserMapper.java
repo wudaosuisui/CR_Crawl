@@ -4,9 +4,7 @@ package com.asiainfo.cr.crawl.store.mysql.mapper;
 import com.asiainfo.cr.crawl.store.pojo.SysUser;
 
 
-public interface SysUserMapper
-{
-//        extends MongoRepository<SysUser, ObjectId> {
+public interface SysUserMapper {
     int deleteByPrimaryKey(Integer userId);
 
     int myinsert(SysUser record);
@@ -15,12 +13,8 @@ public interface SysUserMapper
 
     SysUser selectByPrimaryKey(Integer userId);
 
-    int updateByPrimaryKeySelective(SysUser record);
+    int updateByPrimaryKeySelective(SysUser sysUser);
 
-    int updateByPrimaryKey(SysUser record);
-//
-
-
-
+    int updateByPrimaryKey(SysUser sysUser);
 
 }
